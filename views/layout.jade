@@ -1,0 +1,49 @@
+doctype html
+html(lang='ko')
+  head
+    block title
+      title LunaBnB
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
+    link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap-theme.css')
+    link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.css')
+    link(rel='stylesheet', href='/bower_components/font-awesome/css/font-awesome.min.css')
+    //- CSS
+    link(rel='stylesheet', href='/stylesheets/agency.css')
+    link(rel='stylesheet', href='http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')
+    
+    script(src='/bower_components/jquery/dist/jquery.js')
+    script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+    script(src='/bower_components/lodash/lodash.min.js')
+    script(src='/bower_components/moment/min/moment.min.js')
+    script(src='/javascripts/agency.js')
+    
+    //- Google Fonts
+    link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Kaushan+Script', rel='stylesheet', type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic', rel='stylesheet', type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700', rel='stylesheet', type='text/css')
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+      script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+      
+      
+if flashMessages
+  each texts, type in flashMessages
+    .container
+      .alert(class='alert-#{type}')
+        each msg in texts
+          p= msg           
+
+  body#page-top.index
+    block top-nav
+      include ./includes/topnav
+    //- block hero-unit
+    //- .main-content
+    block header
+    block services
+
+    block portfolio
+    block footer
+      include ./includes/footer
