@@ -231,6 +231,13 @@ fieldset[disabled] .btn-xl.active {
     font-size: 1.5em;
   }
 }
+@media (max-width: 1200px) {
+  #sidebar{
+    position:relative;
+    margin-top: 10px;
+  }
+}
+
 header {
   background-image: url('../images/header_bg.jpg');
   background-repeat: no-repeat;
