@@ -11,13 +11,15 @@ html(lang='ko')
     link(rel='stylesheet', href='/bower_components/font-awesome/css/font-awesome.min.css')
     //- CSS
     link(rel='stylesheet', href='/stylesheets/agency.css')
-    link(rel='stylesheet', href='http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')
+    link(rel='stylesheet', href='/stylesheets/popup/style.css')
     
     script(src='/bower_components/jquery/dist/jquery.js')
     script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
     script(src='/bower_components/lodash/lodash.min.js')
     script(src='/bower_components/moment/min/moment.min.js')
     script(src='/javascripts/agency.js')
+    script(src='/javascripts/popup/main.js')
+    //- script(src='/javascripts/popup/modernizr.js')
     
     //- Google Fonts
     link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
@@ -43,8 +45,10 @@ if flashMessages
     //- .main-content
     block header
     block services
-    block portfolio
+    block content
+    block place
     block portfolioModal
+    block SigninModal
     
     block footer
       include ./includes/footer

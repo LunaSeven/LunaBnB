@@ -9,8 +9,10 @@ block header
                 .intro-lead-in Start a new trip with LunaBnB
                 .intro-heading Welcome To 
                   span.brand_name LunaBnB!
-                a.page-scroll.btn.btn-xl(href='#services') 
-                 | Login
+                a.cd-popup-trigger.page-scroll.fadeandscale_open.btn-xl(href="#fadeandscale") Signin
+                //- a.page-scroll.btn.btn-xl.portfolio-link(href='#signinModal', data-toggle='modal')
+                //-  | Login
+
 // Services Section
 block services
     section#services 
@@ -24,32 +26,32 @@ block services
           .col-md-4
             span.fa-stack.fa-4x
               i.fa.fa-circle.fa-stack-2x.text-primary
-              i.fa.ion-briefcase.fa-stack-1x.fa-inverse
+              i.fa.fa-plane.fa-stack-1x.fa-inverse
             h4.service-heading Tourist
             p.text-muted 
               | 루나비앤비와 함께 새로운 여행을 시작하세요
           .col-md-4
               span.fa-stack.fa-4x
                   i.fa.fa-circle.fa-stack-2x.text-primary
-                  i.fa.ion-android-contact.fa-stack-1x.fa-inverse
+                  i.fa.fa-home.fa-stack-1x.fa-inverse
               h4.service-heading Host
               p.text-muted
                   | 루나비앤비의 호스트가 되어 사람들을 환영해주고 이들이 집처럼 편안함을 느낄 수 있도록 도와주세요.
           .col-md-4
               span.fa-stack.fa-4x
                   i.fa.fa-circle.fa-stack-2x.text-primary
-                  i.fa.ion-iphone.fa-stack-1x.fa-inverse
+                  i.fa.fa-mobile.fa-stack-1x.fa-inverse
               h4.service-heading Responsive Design
               p.text-muted
                   | 모바일 기기로도 쉽게 이용하세요.
-    // Portfolio Grid Section
-  block portfolio
+    // place Grid Section
+  block place
     section#portfolio.bg-light-gray
         .container
             .row
                 .col-lg-12.text-center
-                    h2.section-heading Portfolio
-                    h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
+                    h2.section-heading 숙소
+                    h3.section-subheading.text-muted 나에게 맞는 숙소를 찾아보세요
             .row
                 .col-md-4.col-sm-6.portfolio-item
                     a.portfolio-link(href='#portfolioModal1', data-toggle='modal')
@@ -58,8 +60,9 @@ block services
                               i.fa.ion-search.fa-4x
                         img.img-responsive(src='/images/header_bg.jpg', alt='')
                     .portfolio-caption
-                        h4 Round Icons
-                        p.text-muted Graphic Design
+                        h4 숙소 이름
+                        p.text-muted 가격
+                        p.text-muted 정보
                 .col-md-4.col-sm-6.portfolio-item
                     a.portfolio-link(href='#portfolioModal2', data-toggle='modal')
                         .portfolio-hover
@@ -260,9 +263,9 @@ block portfolioModal
             .col-lg-8.col-lg-offset-2
               .modal-body
                 // Project Details Go Here
-                h2 Project Name
-                p.item-intro.text-muted Lorem ipsum dolor sit amet consectetur.
-                img.img-responsive.img-centered(src='img/portfolio/roundicons-free.png', alt='')
+                h2 숙소 이름
+                p.item-intro.text-muted 1박당 가격.
+                img.img-responsive.img-centered(src='/images/header_bg.jpg', alt='')
                 p
                   | Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!
                 p

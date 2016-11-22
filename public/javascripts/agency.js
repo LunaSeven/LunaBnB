@@ -4,6 +4,5 @@ $(window).scroll(function() {
         $("#mainNav").addClass("navbar-inverse");
     } else {
       $("#mainNav").removeClass("navbar-inverse");
-
     }
 });

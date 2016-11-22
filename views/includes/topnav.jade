@@ -7,15 +7,15 @@ nav#mainNav.navbar.navbar-fixed-top.navbar-custom.transparent
                 |  Menu 
                 i.fa.fa-bars
             a.navbar-brand.page-scroll(href='#page-top') 
-              i.fa-1x.ion-ios-navigate-outline 
-              |LunaBnB
+                i.fa-1x.ion-ios-navigate-outline 
+                |LunaBnB
         // Collect the nav links, forms, and other content for toggling
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
             ul.nav.navbar-nav.navbar-right
                 li.hidden
                     a(href='#page-top')
                 li
-                    a.page-scroll(href='#services') Services
+                    a.page-scroll(href='/rooms') Services
                 li
                     a.page-scroll(href='#portfolio') Portfolio
                 li
@@ -23,4 +23,47 @@ nav#mainNav.navbar.navbar-fixed-top.navbar-custom.transparent
                 li
                     a.page-scroll(href='#team') Team
                 li
-                    a.page-scroll(href='#contact') Contact
+                    a.cd-popup-trigger.page-scroll.fadeandscale_open(href="#fadeandscale") Signin
+
+// Signin
+block SigninModal 
+    .cd-popup(role='alert')
+        .cd-popup-container
+            .col-sm-12.col-sm-offset-1(style='background-color:white')
+                form#main-contact-form.contact-form(name='contact-form', method='post', action='[change.php]')
+                .form-group
+                    br
+                    br
+                    a.btn.btn-primary.btn-lg.btn-block(href='/auth/facebook')
+                      i.fa.fa-facebook.fa-lg
+                      | &nbsp; &nbsp;Signin with Facebook
+                    hr
+                    .form-group
+                    label.input_label Email address
+                    input(
+                        type='email', id='email', name='email', class='form-control', 
+                        placeholder='Email address', required, autofocus
+                    )
+                    .form-group
+                    label.input_label Password 
+                    input(
+                    type='password', id='password', name='password', class='form-control', 
+                    placeholder='Password', required, autofocus
+                    )
+                    br
+                    hr
+                    .form-group
+                    a.input_label 비밀번호가 생각나지 않으세요? 
+                    br
+                    .form-group
+                    button.btn.btn-lg.btn-info.btn-block(type='submit') 로그인
+                    hr
+                    .form-group
+                    label.input_label 
+                    | 에어비앤비 계정이 없으세요
+                    | ?&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+                    a.btn.btn-danger.text-right(href='/users/new') 회원가입
+                    | 
+                    hr
+        // cd-popup-container
+        // cd-popup
