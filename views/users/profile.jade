@@ -1,0 +1,39 @@
+extends ../layout
+
+block content
+  section#contact
+    .container
+      .row
+        .col-lg-12.text-center
+            h2.section-heading Profile
+            h3.section-subheading.text-muted You can edit your Profile
+      .row
+        .col-lg-12
+          form#profileForm(name='sentMessage', novalidate='')
+            .row
+              .col-md-6
+                .form-group
+                  h3 NAME
+                  input#name.form-control(type='text', placeholder='Your Name *', required='', data-validation-required-message='Please enter your name.')
+                  p.help-block.text-danger
+                .form-group
+                  h3 EMAIL
+                  input#email.form-control(type='email', placeholder='Your Email *', required='', data-validation-required-message='Please enter your email address.')
+                  p.help-block.text-danger
+                .form-group
+                  h3 PASSWORD
+                  input#password.form-control(type='password', placeholder='Your Password *', required='', data-validation-required-message='Please enter your phone number.')
+                  p.help-block.text-danger
+                .form-group
+                  h3 CONFIRM PASSWORD
+                  input#confirmPassword.form-control(type='password', placeholder='Confirm Your Password *', required='', data-validation-required-message='Please enter your phone number.')
+                  p.help-block.text-danger
+              .col-md-6
+                .form-group
+                  h3 INTRODUCE
+                  textarea#message.form-control(placeholder='Your Message *', required='', data-validation-required-message='Please enter a message.')
+                  p.help-block.text-danger
+              .clearfix
+              .col-lg-12.text-center
+                #success
+                button.btn.btn-success.btn-lg(type='submit') Update

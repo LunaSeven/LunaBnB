@@ -45,51 +45,54 @@ block services
               p.text-muted
                   | 모바일 기기로도 쉽게 이용하세요.
     // place Grid Section
-  block place
-    section#portfolio.bg-light-gray
-        .container
-            .row
-                .col-lg-12.text-center
-                    h2.section-heading 숙소
-                    h3.section-subheading.text-muted 나에게 맞는 숙소를 찾아보세요
-            .row
-                .col-md-4.col-sm-6.portfolio-item
-                    a.portfolio-link(href='#portfolioModal1', data-toggle='modal')
-                        .portfolio-hover
-                            .portfolio-hover-content
-                              i.fa.ion-search.fa-4x
-                        img.img-responsive(src='/images/header_bg.jpg', alt='')
-                    .portfolio-caption
-                        h4 숙소 이름
-                        p.text-muted 가격
-                        p.text-muted 정보
-                .col-md-4.col-sm-6.portfolio-item
-                    a.portfolio-link(href='#portfolioModal2', data-toggle='modal')
-                        .portfolio-hover
-                            .portfolio-hover-content
-                              i.fa.ion-search.fa-4x
-                        img.img-responsive(src='/images/header_bg.jpg', alt='')
-                    .portfolio-caption
-                        h4 Startup Framework
-                        p.text-muted Website Design
-                .col-md-4.col-sm-6.portfolio-item
-                    a.portfolio-link(href='#portfolioModal3', data-toggle='modal')
-                        .portfolio-hover
-                            .portfolio-hover-content
-                              i.fa.ion-search.fa-4x
-                        img.img-responsive(src='/images/header_bg.jpg', alt='')
-                    .portfolio-caption
-                        h4 Treehouse
-                        p.text-muted Website Design
-                .col-md-4.col-sm-6.portfolio-item
-                    a.portfolio-link(href='#portfolioModal4', data-toggle='modal')
-                        .portfolio-hover
-                            .portfolio-hover-content
-                              i.fa.ion-search.fa-4x
-                        img.img-responsive(src='/images/header_bg.jpg', alt='')
-                    .portfolio-caption
-                        h4 Golden
-                        p.text-muted Website Design
+block place
+  section#portfolio.bg-light-gray
+      .container
+          .row
+              .col-lg-12.text-center
+                  h2.section-heading 숙소
+                  h3.section-subheading.text-muted 나에게 맞는 숙소를 찾아보세요
+          .row
+              .col-md-4.col-sm-6.portfolio-item
+                  a.portfolio-link(href='#portfolioModal1', data-toggle='modal')
+                      .portfolio-hover
+                          .portfolio-hover-content
+                            i.fa.fa-search-plus.fa-4x
+                      img.img-responsive(src='/images/header_bg.jpg', alt='')
+                  .portfolio-caption
+                      h4 숙소 이름
+                      p.text-muted 가격
+                      p.text-muted 도시
+              .col-md-4.col-sm-6.portfolio-item
+                  a.portfolio-link(href='#portfolioModal2', data-toggle='modal')
+                      .portfolio-hover
+                          .portfolio-hover-content
+                            i.fa.fa-search-plus.fa-4x
+                      img.img-responsive(src='/images/header_bg.jpg', alt='')
+                  .portfolio-caption
+                      h4 숙소 이름
+                      p.text-muted 가격
+                      p.text-muted 도시
+              .col-md-4.col-sm-6.portfolio-item
+                  a.portfolio-link(href='#portfolioModal3', data-toggle='modal')
+                      .portfolio-hover
+                          .portfolio-hover-content
+                            i.fa.fa-search-plus.fa-4x
+                      img.img-responsive(src='/images/header_bg.jpg', alt='')
+                  .portfolio-caption
+                      h4 숙소 이름
+                      p.text-muted 가격
+                      p.text-muted 도시
+              .col-md-4.col-sm-6.portfolio-item
+                  a.portfolio-link(href='#portfolioModal4', data-toggle='modal')
+                      .portfolio-hover
+                          .portfolio-hover-content
+                            i.fa.fa-search-plus.fa-4x
+                      img.img-responsive(src='/images/header_bg.jpg', alt='')
+                  .portfolio-caption
+                      h4 숙소 이름
+                      p.text-muted 가격
+                      p.text-muted 도시
 //- // About Section
 //- section#about
 //-     .container
@@ -221,33 +224,4 @@ block services
 //-             .col-md-3.col-sm-6
 //-                 a(href='#')
 //-                     img.img-responsive.img-centered(src='img/logos/creative-market.jpg', alt='')
-//- // Contact Section
-//- section#contact
-//-     .container
-//-         .row
-//-             .col-lg-12.text-center
-//-                 h2.section-heading Contact Us
-//-                 h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
-//-         .row
-//-             .col-lg-12
-//-                 form#contactForm(name='sentMessage', novalidate='')
-//-                     .row
-//-                         .col-md-6
-//-                             .form-group
-//-                                 input#name.form-control(type='text', placeholder='Your Name *', required='', data-validation-required-message='Please enter your name.')
-//-                                 p.help-block.text-danger
-//-                             .form-group
-//-                                 input#email.form-control(type='email', placeholder='Your Email *', required='', data-validation-required-message='Please enter your email address.')
-//-                                 p.help-block.text-danger
-//-                             .form-group
-//-                                 input#phone.form-control(type='tel', placeholder='Your Phone *', required='', data-validation-required-message='Please enter your phone number.')
-//-                                 p.help-block.text-danger
-//-                         .col-md-6
-//-                             .form-group
-//-                                 textarea#message.form-control(placeholder='Your Message *', required='', data-validation-required-message='Please enter a message.')
-//-                                 p.help-block.text-danger
-//-                         .clearfix
-//-                         .col-lg-12.text-center
-//-                             #success
-//-                             button.btn.btn-xl(type='submit') Send Message
 // Portfolio Modal 1

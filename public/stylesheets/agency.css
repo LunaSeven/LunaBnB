@@ -119,8 +119,8 @@ fieldset[disabled] .btn-primary.active {
 .btn-xl.active,
 .open .dropdown-toggle.btn-xl {
   color: white;
-  background-color: #2196F3;
-  border-color: #f6bf01;
+  /*background-color: #2196F3;
+  border-color: #f6bf01;*/
 }
 .btn-xl:active,
 .btn-xl.active,
@@ -571,7 +571,7 @@ aside.clients img {
 }
 section#contact {
   background-color: #222222;
-  background-image: url('../img/map-image.png');
+  background-image: url('../images/profile_bg.jpg');
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -783,4 +783,7 @@ body {
   font-size: 24px;
   line-height: 1.33;
   border-radius: 35px;
+}
+#profileForm h3{
+  color: #eee;
 }

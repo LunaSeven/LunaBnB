@@ -62,7 +62,11 @@ router.get('/:id/edit', function(req, res, next) {
     res.render('users/edit', {user: user});
   });
 });
-
+////////////////////////////////////////////////////////
+router.get('/edit', function(req, res, next) {
+    res.render('users/profile');
+});
+///////////////////////////////////////////////////////////////
 router.put('/:id', function(req, res, next) {
   var err = validateForm(req.body);
   if (err) {
