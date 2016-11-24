@@ -21,7 +21,7 @@ nav#mainNav.navbar.navbar-fixed-top.navbar-custom.transparent
                 li
                     a.page-scroll(href='/rooms/host') About
                 li
-                    a.page-scroll(href='#team') Team
+                    a.page-scroll(href='#portfolioModal1', data-toggle='modal') Team
                 li
                     a.signin-cd-popup-trigger.page-scroll.fadeandscale_open(href="#fadeandscale") Signin
 
@@ -121,3 +121,40 @@ block SignupModal
                     hr
         // cd-popup-container
         // cd-popup
+block portfolioModal 
+  #portfolioModal1.portfolio-modal.modal.fade(tabindex='-1', role='dialog', aria-hidden='true')
+    .modal-dialog
+      .modal-content(style='width:auto')
+        .close-modal(data-dismiss='modal')
+          .lr
+            .rl
+        .container
+          .row
+            .col-lg-12.col-lg-offset-2
+              .modal-body
+                // Project Details Go Here
+                  // Page Heading
+          .row
+            .col-lg-12
+              h1.page-header
+                | Favorite list
+              
+          // /.row
+          // Project One
+          .row
+            .col-md-7
+              a(href='#')
+                img.img-responsive(src='http://placehold.it/700x300', alt='')
+            .col-md-5
+              h3 숙소이름
+              h4 도시or 주소
+              p
+                | 소개 
+              a.btn.btn-danger(href='#')
+                | 예약하기 
+                span.glyphicon.glyphicon-chevron-right
+          // /.row
+          hr                  
+          button.btn.btn-primary(type='button', data-dismiss='modal')
+            i.fa.fa-times
+            |  Close P
