@@ -682,6 +682,8 @@ ul.social-buttons li a:active {
   min-height: 100%;
   padding: 100px 0;
   text-align: center;
+  background-color: rgba(33, 33, 33, 0.9);
+  color:#eee;
 }
 .portfolio-modal .modal-content h2 {
   margin-bottom: 15px;
@@ -711,6 +713,7 @@ ul.social-buttons li a:active {
   top: 25px;
   right: 25px;
   cursor: pointer;
+  color:#fff;
 }
 .portfolio-modal .close-modal:hover {
   opacity: 0.3;
@@ -719,7 +722,7 @@ ul.social-buttons li a:active {
   height: 75px;
   width: 1px;
   margin-left: 35px;
-  background-color: #222222;
+  background-color: #fff;
   transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   /* IE 9 */
@@ -730,7 +733,7 @@ ul.social-buttons li a:active {
 .portfolio-modal .close-modal .lr .rl {
   height: 75px;
   width: 1px;
-  background-color: #222222;
+  background-color: #fff;
   transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   /* IE 9 */
@@ -786,4 +789,16 @@ body {
 }
 #profileForm h3{
   color: #eee;
+}
+.btn_favorite{
+  z-index: 999;
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+
 }
