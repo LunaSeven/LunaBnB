@@ -4,7 +4,7 @@ block header
         .container
             .intro-text
                 .intro-lead-in Start a new trip with LunaBnB
-                .intro-heading Check in here!
+                .intro-heading Check in Here!
                 
 
 
@@ -26,6 +26,24 @@ block content
                 span.glyphicon.glyphicon-time
                 |  Posted on August 24, 2013 at 9:00 PM : 등록날짜
             hr
+
+            
+            // Post Content
+            p.lead
+                | 간단한 설명 
+            p
+                | 주소: 
+            p
+                | 요금: 
+            p
+                | 편의시설: 
+            p
+                | 이용 규칙:
+            hr
+            // Blog Comments
+            // Preview Image
+            //- img.img-responsive(src='http://placehold.it/900x300', alt='')
+          
             // DaumMap
             #map(style='width:100%;height:400px;')
             script.
@@ -35,24 +53,6 @@ block content
               level: 3
               };
               var map = new daum.maps.Map(container, options);
-
-            hr
-            // Post Content
-            p.lead
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?
-            p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.
-            p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!
-            p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?
-            p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!
-            hr
-            // Blog Comments
-            // Preview Image
-            img.img-responsive(src='http://placehold.it/900x300', alt='')
-            hr
 
             // Comments Form
             hr
@@ -75,41 +75,23 @@ block content
           // Blog Search Well
           #sidebar
             .well
-              h4 Blog Search
-              .input-group
-                input.form-control(type='text')
-                span.input-group-btn
-                  button.btn.btn-default(type='button')
-                    span.glyphicon.glyphicon-search
-              // /.input-group
-            // Blog Categories Well
-            .well
-              h4 Blog Categories
-              .row
-                .col-lg-6
-                  ul.list-unstyled
-                    li
-                      a(href='#') Category Name
-                    li
-                      a(href='#') Category Name
-                    li
-                      a(href='#') Category Name
-                    li
-                      a(href='#') Category Name
-                .col-lg-6
-                  ul.list-unstyled
-                    li
-                      a(href='#') Category Name
-                    li
-                      a(href='#') Category Name
-                    li
-                      a(href='#') Category Name
-                    li
-                      a(href='#') Category Name
-              // /.row
-            // Side Widget Well
-            .well
-              h4 Side Widget Well
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.
+              h2 ₩72740 / 1박
+                | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              hr
+              h5 Check In
+              .inner-addon.right-addon
+                i.fa.fa-calendar
+                input#date_check_in.form-control.floating-label(type="text", placeholder="Select Date")
+              h5 Check Out
+              .inner-addon.right-addon
+                i.fa.fa-calendar
+                input#date_check_out.form-control.floating-label(type="text", placeholder="Select Date")
+              hr  
+              hr
+              button.btn.btn-lg.btn-danger.btn-block(type='submit') 예약하기
+            //- .well
+            //-   h4 Side Widget Well
+            //-   p
+            //-     | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.
           // /.row

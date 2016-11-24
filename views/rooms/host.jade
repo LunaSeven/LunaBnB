@@ -1,0 +1,70 @@
+extends ../layout
+block content
+  link(rel='stylesheet', href='/stylesheets/rooms/host.css')
+
+  .host_main
+    .container
+      .row
+        h1
+          | 루나비앤비 호스트가 되어 회원님의 꿈을 실현하세요.
+        h3 
+          | 지역에 온 사람들을 환영해주고 이들이 집처럼 편안함을 느낄 수 있도록 도와주세요.
+        hr
+        .col-md-7
+          
+          form
+            .form-group
+              label 숙소 이름
+              input.form-control(type='text', placeholder='숙소 이름')
+            .form-group
+              label 소개
+              textarea.form-control(rows='5')
+            .form-group
+              label(for='Password') 도시
+              select#city.form-control.selectpicker
+                optgroup(label="수도권")
+                  option(selected) 서울
+                  option 경기
+                  option 인천
+                  option 강원
+                optgroup(label="중부권")
+                  option 대전
+                  option 충북
+                  option 충남
+                optgroup(label="남부권")
+                  option 부산
+                  option 울산
+                  option 경남
+                  option 대구
+                  option 경북
+                  option 광주
+                  option 전남
+                  option 전주/전북
+                  option 제주
+            .form-group
+              label 주소
+              br
+              script(src='http://dmaps.daum.net/map_js_init/postcode.v2.js')
+
+              span#host_postcode(style='color:#eee') 우편번호
+              input#find_address.btn.btn-success(type='button', value='우편번호 찾기')
+              br
+              input.form-control#sample4_address(type='text', placeholder='도로명주소')
+              span#guide(style='color:#999')
+              input#sample4_address2.form-control(type='text', placeholder='상세주소')
+
+            .form-group
+              label 요금
+            .inner-addon.right-addon
+              i.fa.fa-krw
+              input.form-control(type="number", placeholder='1박당 요금')
+            br
+            .form-group
+              label 편의시설
+              textarea.form-control(rows='5')
+            
+            .form-group
+              label 이용규칙
+              textarea.form-control(rows='5')
+            
+            button.btn.btn-info(type='submit') Create Account

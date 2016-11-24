@@ -619,6 +619,7 @@
               },
               rotateElement: function (el, deg)
               {
+                console.log("rotateElement" + el + deg);
                  $(el).css
                          ({
                             WebkitTransform: 'rotate(' + deg + 'deg)',
@@ -999,6 +1000,7 @@
               },
               _onSelectDate: function (e)
               {
+                console.log(e);
                  this.$dtpElement.find('a.dtp-select-day').removeClass('selected');
                  $(e.currentTarget).addClass('selected');
 
