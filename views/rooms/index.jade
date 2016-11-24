@@ -4,8 +4,8 @@ block header
         .container
             .intro-text
                 .intro-lead-in Start a new trip with LunaBnB
-                .intro-heading Welcome To 
-                  span.brand_name LunaBnB!
+                .intro-heading Check in here!
+                
 
 
 
@@ -26,8 +26,16 @@ block content
                 span.glyphicon.glyphicon-time
                 |  Posted on August 24, 2013 at 9:00 PM : 등록날짜
             hr
-            // Preview Image
-            img.img-responsive(src='http://placehold.it/900x300', alt='')
+            // DaumMap
+            #map(style='width:100%;height:400px;')
+            script.
+              var container = document.getElementById('map');
+              var options = {
+              center: new daum.maps.LatLng(33.450701, 126.570667),
+              level: 3
+              };
+              var map = new daum.maps.Map(container, options);
+
             hr
             // Post Content
             p.lead
@@ -42,43 +50,26 @@ block content
                 | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!
             hr
             // Blog Comments
-            // Comments Form
-            .well
-                h4 Leave a Comment:
-                form(role='form')
-                    .form-group
-                        textarea.form-control(rows='3')
-                    button.btn.btn-primary(type='submit') Submit
+            // Preview Image
+            img.img-responsive(src='http://placehold.it/900x300', alt='')
             hr
-            // Posted Comments
-            // Comment
-            .media
-                a.pull-left(href='#')
-                    img.media-object(src='http://placehold.it/64x64', alt='')
-                .media-body
-                    h4.media-heading
-                        | Start Bootstrap
-                        small August 25, 2014 at 9:30 PM
-                    |                         Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-            // Comment
-            .media
-                a.pull-left(href='#')
-                    img.media-object(src='http://placehold.it/64x64', alt='')
-                .media-body
-                    h4.media-heading
-                        | Start Bootstrap
-                        small August 25, 2014 at 9:30 PM
-                    |                         Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    // Nested Comment
-                    .media
-                            a.pull-left(href='#')
-                              img.media-object(src='http://placehold.it/64x64', alt='')
-                            .media-body
-                              h4.media-heading
-                                | Nested Start Bootstrap
-                                small August 25, 2014 at 9:30 PM
-                              |                                 Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                          // End Nested Comment
+
+            // Comments Form
+            hr
+            // 라이브리 시티 설치 코드
+            #lv-container(data-id='city', data-uid='MTAyMC8yNzE4OC8zNzc2')
+              script(type='text/javascript').
+                (function(d, s) {
+                var j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') { return; }
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+                e.parentNode.insertBefore(j, e);
+                })(document, 'script');
+              noscript  라이브리 댓글 작성을 위해 JavaScript를 활성화 해주세요
+            // 시티 설치 코드 끝
+
         // Blog Sidebar Widgets Column
         .col-md-4
           // Blog Search Well

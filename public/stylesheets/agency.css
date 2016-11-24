@@ -36,6 +36,8 @@ a:focus,
 a:active,
 a.active {
   color: #2196F3;
+  text-decoration:none;
+
 }
 h1,
 h2,

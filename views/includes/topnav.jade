@@ -7,7 +7,7 @@ nav#mainNav.navbar.navbar-fixed-top.navbar-custom.transparent
                 |  Menu 
                 i.fa.fa-bars
             a.navbar-brand.page-scroll(href='#page-top') 
-                i.fa-1x.ion-ios-navigate-outline 
+                i.fa.fa-1x.fa-paper-plane(aria-hidden="true")
                 |LunaBnB
         // Collect the nav links, forms, and other content for toggling
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
@@ -23,14 +23,14 @@ nav#mainNav.navbar.navbar-fixed-top.navbar-custom.transparent
                 li
                     a.page-scroll(href='#team') Team
                 li
-                    a.cd-popup-trigger.page-scroll.fadeandscale_open(href="#fadeandscale") Signin
+                    a.signin-cd-popup-trigger.page-scroll.fadeandscale_open(href="#fadeandscale") Signin
 
 // Signin
 block SigninModal 
-    .cd-popup(role='alert')
+    #signin.cd-popup(role='alert')
         .cd-popup-container
             .col-sm-12.col-sm-offset-1(style='background-color:white')
-                form#main-contact-form.contact-form(name='contact-form', method='post', action='[change.php]')
+                form#signin-contact-form.contact-form(name='contact-form', method='post')
                 .form-group
                     br
                     br
@@ -39,7 +39,7 @@ block SigninModal
                       | &nbsp; &nbsp;Signin with Facebook
                     hr
                     .form-group
-                    label.input_label Email address
+                    label.input_label.text-left Email address
                     input(
                         type='email', id='email', name='email', class='form-control', 
                         placeholder='Email address', required, autofocus
@@ -62,8 +62,62 @@ block SigninModal
                     label.input_label 
                     | 루나비앤비 계정이 없으세요
                     | ?&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                    a.btn.btn-danger.text-right(href='/users/new') 회원가입
-                    | 
+                    a.btn.btn-danger.text-right.signup-cd-popup-trigger.page-scroll.fadeandscale_open(href="#fadeandscale") 
+                      | 회원가입
+                    hr
+        // cd-popup-container
+        // cd-popup
+        
+//- signup
+block SignupModal 
+    #signup.cd-popup(role='alert')
+        .cd-popup-container
+            .col-sm-12.col-sm-offset-1(style='background-color:white')
+                form#signup-contact-form.contact-form(name='contact-form', method='post', action='[change.php]')
+                .form-group
+                    br
+                    br
+                    a.btn.btn-primary.btn-lg.btn-block(href='/auth/facebook')
+                      i.fa.fa-facebook.fa-lg
+                      | &nbsp; &nbsp;Signup with Facebook
+                    hr
+                    .form-group
+                    label.input_label Name
+                    input(
+                        type='email', id='email', name='email', class='form-control', 
+                        placeholder='Email address', required, autofocus
+                    )
+                    .form-group
+                    label.input_label Email address
+                    input(
+                        type='email', id='email', name='email', class='form-control', 
+                        placeholder='Email address', required, autofocus
+                    )
+                    .form-group
+                    label.input_label Password 
+                    input(
+                    type='password', id='password', name='password', class='form-control', 
+                    placeholder='Password', required, autofocus
+                    )
+                    .form-group
+                    label.input_label Confirm Password 
+                    input(
+                    type='password', id='confirm_password', name='confirm_password', class='form-control', 
+                    placeholder='Confirm Password', required, autofocus
+                    )
+                    hr
+                    .form-group
+                      | 회원 가입하면 에어비앤비의 서비스 약관, 비차별 정책, 결제 서비스 약관, 개인정보 보호정책, 
+                      | 게스트 환불 정책, 호스트 보호 프로그램 이용약관에 동의하는 것입니다.
+                    .form-group
+                    button.btn.btn-lg.btn-danger.btn-block(type='submit') 회원가입
+                    hr
+                    .form-group
+                    label.input_label 
+                    | 이미 루나비앤비 계정이 있나요?
+                    | ?&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+                    a.btn.btn-info.text-right.signin-cd-popup-trigger.page-scroll.fadeandscale_open(href="#fadeandscale") 
+                      | 로그인
                     hr
         // cd-popup-container
         // cd-popup
