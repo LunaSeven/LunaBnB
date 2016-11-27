@@ -7,7 +7,7 @@ function needAuth(req, res, next) {
     next();
   } else {
     req.flash('danger', '로그인이 필요합니다.');
-    res.redirect('/signin');
+    res.redirect('/');
   }
 }
 
@@ -54,19 +54,20 @@ router.get('/new', function(req, res, next) {
   res.render('users/new', {messages: req.flash()});
 });
 
-router.get('/:id/edit', function(req, res, next) {
+router.get('/:id/edit',needAuth, function(req, res, next) {
   User.findById(req.params.id, function(err, user) {
+    console.log(user);
     if (err) {
       return next(err);
     }
-    res.render('users/edit', {user: user});
+    res.render('users/profile', {user: user});
   });
 });
-////////////////////////////////////////////////////////
-router.get('/edit', function(req, res, next) {
-    res.render('users/profile');
-});
-///////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////
+// router.get('/edit', function(req, res, next) {
+//     res.render('users/profile');
+// });
+// ///////////////////////////////////////////////////////////////
 router.put('/:id', function(req, res, next) {
   var err = validateForm(req.body);
   if (err) {
@@ -82,11 +83,11 @@ router.put('/:id', function(req, res, next) {
       req.flash('danger', '존재하지 않는 사용자입니다.');
       return res.redirect('back');
     }
-
-    if (user.password !== req.body.current_password) {
-      req.flash('danger', '현재 비밀번호가 일치하지 않습니다.');
-      return res.redirect('back');
-    }
+    // console.log(user.password);
+    // if (user.password !== req.body.current_password) {
+    //   req.flash('danger', '현재 비밀번호가 일치하지 않습니다.');
+    //   return res.redirect('back');
+    // }
 
     user.name = req.body.name;
     user.email = req.body.email;
@@ -99,7 +100,7 @@ router.put('/:id', function(req, res, next) {
         return next(err);
       }
       req.flash('success', '사용자 정보가 변경되었습니다.');
-      res.redirect('/users');
+      res.redirect('back');
     });
   });
 });

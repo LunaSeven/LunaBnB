@@ -18,22 +18,30 @@ nav#mainNav.navbar.navbar-fixed-top.navbar-custom.transparent
                     a.page-scroll(href='/rooms') rooms
                 li
                     a.page-scroll(href='/rooms/room') Portfolio
-                li
-                    a.page-scroll(href='/rooms/host') About
-                li
-                    a.page-scroll(href='/users/edit') profile
-                li
-                    a.page-scroll(href='#portfolioModal1', data-toggle='modal') Team
-                li
+                if (currentUser) 
+                  li
+                    a.page-scroll(href='/rooms/host') Hosting
+                  li
+                    a.page-scroll(href='/users/#{currentUser._id}/edit') profile
+                  li
+                    a.page-scroll(href='#portfolioModal1', data-toggle='modal') Favorite
+                  li
+                    a(href='/signout') Signout
+                else
+
+                  li
                     a.signin-cd-popup-trigger.page-scroll.fadeandscale_open(href="#fadeandscale") Signin
+                  li
+                    a.signup-cd-popup-trigger.page-scroll.fadeandscale_open(href="#fadeandscale") Signup
+
 
 // Signin
 block SigninModal 
     #signin.cd-popup(role='alert')
         .cd-popup-container
             .col-sm-12.col-sm-offset-1(style='background-color:white')
-                form#signin-contact-form.contact-form(name='contact-form', method='post')
-                .form-group
+                form#signin-contact-form.contact-form(name='contact-form', method='post',action='/signin')
+                    .form-group
                     br
                     br
                     a.btn.btn-primary.btn-lg.btn-block(href='/auth/facebook')
@@ -55,7 +63,7 @@ block SigninModal
                     br
                     hr
                     .form-group
-                    a.input_label 비밀번호가 생각나지 않으세요? 
+                    a.input_label(href='/reset-password') 비밀번호가 생각나지 않으세요? 
                     br
                     .form-group
                     button.btn.btn-lg.btn-info.btn-block(type='submit') 로그인
@@ -75,8 +83,8 @@ block SignupModal
     #signup.cd-popup(role='alert')
         .cd-popup-container
             .col-sm-12.col-sm-offset-1(style='background-color:white')
-                form#signup-contact-form.contact-form(name='contact-form', method='post', action='[change.php]')
-                .form-group
+                form#signup-contact-form.contact-form(action='/users',method='POST')
+                    .form-group
                     br
                     br
                     a.btn.btn-primary.btn-lg.btn-block(href='/auth/facebook')
@@ -86,8 +94,8 @@ block SignupModal
                     .form-group
                     label.input_label Name
                     input(
-                        type='email', id='email', name='email', class='form-control', 
-                        placeholder='Email address', required, autofocus
+                        type='text', id='name', name='name', class='form-control', 
+                        placeholder='Your Name', required, autofocus
                     )
                     .form-group
                     label.input_label Email address
@@ -104,15 +112,15 @@ block SignupModal
                     .form-group
                     label.input_label Confirm Password 
                     input(
-                    type='password', id='confirm_password', name='confirm_password', class='form-control', 
+                    type='password', id='password_confirmation', name='password_confirmation', class='form-control', 
                     placeholder='Confirm Password', required, autofocus
                     )
                     hr
                     .form-group
-                      | 회원 가입하면 에어비앤비의 서비스 약관, 비차별 정책, 결제 서비스 약관, 개인정보 보호정책, 
+                      | 회원 가입하면 루나비앤비의 서비스 약관, 비차별 정책, 결제 서비스 약관, 개인정보 보호정책, 
                       | 게스트 환불 정책, 호스트 보호 프로그램 이용약관에 동의하는 것입니다.
                     .form-group
-                    button.btn.btn-lg.btn-danger.btn-block(type='submit') 회원가입
+                    button#btn_signup.btn.btn-lg.btn-danger.btn-block(type='submit') 회원가입
                     hr
                     .form-group
                     label.input_label 

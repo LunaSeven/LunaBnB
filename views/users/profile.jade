@@ -9,31 +9,36 @@ block content
             h3.section-subheading.text-muted You can edit your Profile
       .row
         .col-lg-12
-          form#profileForm(name='sentMessage', novalidate='')
+          form#profileForm(action='/users/#{user._id}?_method=PUT', method='POST')
             .row
               .col-md-6
                 .form-group
-                  h3 NAME
-                  input#name.form-control(type='text', placeholder='Your Name *', required='', data-validation-required-message='Please enter your name.')
+                  h3(for='name') NAME
+                  input#name.form-control(value='#{user.name}',type='text', name='name',placeholder='Your Name *', required='', data-validation-required-message='Please enter your name.')
                   p.help-block.text-danger
                 .form-group
-                  h3 EMAIL
-                  input#email.form-control(type='email', placeholder='Your Email *', required='', data-validation-required-message='Please enter your email address.')
+                  h3(for='email') EMAIL
+                  input#email.form-control(value='#{user.email}',type='email',readonly, name='email',placeholder='Your Email *', required='', data-validation-required-message='Please enter your email address.')
+                  p.help-block.text-danger
+                //- .form-group
+                //-   h3(for='current_password') CURRENT PASSWORD
+                //-   input#current_password.form-control(type='password',name='current_password' ,placeholder='Your Currnet Password *', required='', data-validation-required-message='Please enter your Current Password.')
+                //-   p.help-block.text-danger
+                .form-group
+                  h3(for='password') PASSWORD
+                  input#password.form-control(type='password',name='password', placeholder='Your Password *', required='', data-validation-required-message='Please enter your password.')
                   p.help-block.text-danger
                 .form-group
-                  h3 PASSWORD
-                  input#password.form-control(type='password', placeholder='Your Password *', required='', data-validation-required-message='Please enter your phone number.')
-                  p.help-block.text-danger
-                .form-group
-                  h3 CONFIRM PASSWORD
-                  input#confirmPassword.form-control(type='password', placeholder='Confirm Your Password *', required='', data-validation-required-message='Please enter your phone number.')
+                  h3(for='password_confirmation') CONFIRM PASSWORD
+                  input#password_confirmation.form-control(type='password', name='password_confirmation',placeholder='Confirm Your Password *', required='', data-validation-required-message='Please enter your phone number.')
                   p.help-block.text-danger
               .col-md-6
+              
                 .form-group
                   h3 INTRODUCE
-                  textarea#message.form-control(placeholder='Your Message *', required='', data-validation-required-message='Please enter a message.')
+                  textarea.form-control(rows=5,placeholder='Your Introduce *', required='', data-validation-required-message='Please enter a Introduce.')
                   p.help-block.text-danger
               .clearfix
               .col-lg-12.text-center
                 #success
-                button.btn.btn-success.btn-lg(type='submit') Update
+                button.btn.btn-success.btn-lg(type='submit') Save

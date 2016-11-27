@@ -12,5 +12,5 @@ $(document).ready(function() {
         weekStart: 0
     });
 
-    $.material.init()
+    $.material.init();
 });

@@ -1,4 +1,5 @@
 jQuery(document).ready(function($){
+
 	//open popup
 	$('.signup-cd-popup-trigger').on('click', function(event){
     $('.cd-popup').removeClass('is-visible');
