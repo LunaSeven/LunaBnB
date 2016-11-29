@@ -4,6 +4,17 @@ var fs = require('fs');
 var multer = require('multer');
 var upload = multer({dest: 'uploads/'});
 
+
+
+function needAuth(req, res, next) {
+  if (req.isAuthenticated()) {
+    next();
+  } else {
+    req.flash('danger', '로그인이 필요합니다.');
+    res.redirect('/');
+  }
+}
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('rooms/list');
@@ -15,7 +26,7 @@ router.get('/room', function(req, res, next) {
   res.render('rooms/index');
 });
 
-router.get('/host', function(req, res, next) {
+router.get('/host',needAuth,function(req, res, next) {
   res.render('rooms/host');
 });
 

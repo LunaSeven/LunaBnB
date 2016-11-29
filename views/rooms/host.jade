@@ -21,6 +21,9 @@ block content
           
           
             .form-group
+              label 호스트
+              input.form-control(readonly type='text', value='#{currentUser.email}' name='host_name')
+            .form-group
               label 숙소 이름
               input.form-control(type='text', placeholder='숙소 이름' name='input_name')
             .form-group
@@ -53,7 +56,7 @@ block content
               br
               script(src='http://dmaps.daum.net/map_js_init/postcode.v2.js')
 
-              span#host_postcode(style='color:#eee' name='post_code') 우편번호
+              input#host_postcode(readonly style='color:#000' name='post_code' type='text' placeholder='우편번호') 
               input#find_address.btn.btn-success(type='button', value='우편번호 찾기')
               br
               input.form-control#sample4_address(type='text', placeholder='도로명주소' name='input_addr1')

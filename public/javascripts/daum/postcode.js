@@ -33,7 +33,7 @@ $('#find_address').click(function() {
 
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
             // alert(data.zonecode);
-            $('#host_postcode').text(data.zonecode);
+            $('#host_postcode').val(data.zonecode);
             // document.getElementById('sample4_postcode').value = data.zonecode; //5자리 새우편번호 사용
             document.getElementById('sample4_address').value = fullAddr;
 
