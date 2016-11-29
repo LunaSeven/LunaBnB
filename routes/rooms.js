@@ -18,7 +18,13 @@ function needAuth(req, res, next) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('rooms/list');
+  Room.find({}, function (err, rooms) {
+      if (err) {
+          next(err);
+      } else {
+          res.render('rooms/list', {rooms: rooms});
+      }
+  });
 });
 
 

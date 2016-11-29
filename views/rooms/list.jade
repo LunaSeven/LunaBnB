@@ -25,27 +25,28 @@ block content
     // /.row
     // Projects Row
     .row
-      .col-md-4.portfolio-item
-        a(href='#')
-          img.img-responsive(src='http://placehold.it/700x400', alt='')
-        h3
-          a(href='#') Project Name
-        p
-          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.
-      .col-md-4.portfolio-item
-        a(href='#')
-          img.img-responsive(src='http://placehold.it/700x400', alt='')
-        h3
-          a(href='#') Project Name
-        p
-          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.
-      .col-md-4.portfolio-item
-        a(href='#')
-          img.img-responsive(src='http://placehold.it/700x400', alt='')
-        h3
-          a(href='#') Project Name
-        p
-          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.
+      each room in rooms
+        .col-md-4.portfolio-item
+          a(href='#')
+            img.img-responsive.thumbnail(src=room.image.path + "/" + room.image.originalname, alt=room.image.path)
+          h3
+            a(href='#') Project Name
+          p
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.
+        .col-md-4.portfolio-item
+          a(href='#')
+            img.img-responsive(src='http://placehold.it/700x400', alt='')
+          h3
+            a(href='#') Project Name
+          p
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.
+        .col-md-4.portfolio-item
+          a(href='#')
+            img.img-responsive(src='http://placehold.it/700x400', alt='')
+          h3
+            a(href='#') Project Name
+          p
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.
     // /.row
     // Projects Row
     .row
