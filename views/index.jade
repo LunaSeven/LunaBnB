@@ -54,46 +54,49 @@ block place
                   h2.section-heading 숙소
                   h3.section-subheading.text-muted 나에게 맞는 숙소를 찾아보세요
           .row
+            each room in rooms
               .col-md-4.col-sm-6.portfolio-item
-                  a.portfolio-link(href='#portfolioModal1', data-toggle='modal')
+                  a.portfolio-link(href='##{room._id}', data-toggle='modal')
                       .portfolio-hover
                           .portfolio-hover-content
                             i.fa.fa-search-plus.fa-4x
-                      img.img-responsive(src='/images/header_bg.jpg', alt='')
+                      img.img-responsive.thumbnail(src=room.image.path + "/" + room.image.originalname, alt=room.image.originalname)
                   .portfolio-caption
-                      h4 숙소 이름
-                      p.text-muted 가격
-                      p.text-muted 도시
-              .col-md-4.col-sm-6.portfolio-item
-                  a.portfolio-link(href='#portfolioModal2', data-toggle='modal')
-                      .portfolio-hover
-                          .portfolio-hover-content
-                            i.fa.fa-search-plus.fa-4x
-                      img.img-responsive(src='/images/header_bg.jpg', alt='')
-                  .portfolio-caption
-                      h4 숙소 이름
-                      p.text-muted 가격
-                      p.text-muted 도시
-              .col-md-4.col-sm-6.portfolio-item
-                  a.portfolio-link(href='#portfolioModal3', data-toggle='modal')
-                      .portfolio-hover
-                          .portfolio-hover-content
-                            i.fa.fa-search-plus.fa-4x
-                      img.img-responsive(src='/images/header_bg.jpg', alt='')
-                  .portfolio-caption
-                      h4 숙소 이름
-                      p.text-muted 가격
-                      p.text-muted 도시
-              .col-md-4.col-sm-6.portfolio-item
-                  a.portfolio-link(href='#portfolioModal4', data-toggle='modal')
-                      .portfolio-hover
-                          .portfolio-hover-content
-                            i.fa.fa-search-plus.fa-4x
-                      img.img-responsive(src='/images/header_bg.jpg', alt='')
-                  .portfolio-caption
-                      h4 숙소 이름
-                      p.text-muted 가격
-                      p.text-muted 도시
+                      h4 #{room.room_name}
+                      p.text-muted &#8361; #{room.fee}(1박)
+                      p.text-muted #{room.city}
+  each room in rooms
+    .portfolio-modal.modal.fade(id='#{room._id}' tabindex='-1', role='dialog', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .close-modal(data-dismiss='modal')
+            .lr
+              .rl
+          .container
+            .row
+              .col-lg-8.col-lg-offset-2
+                .modal-body
+                  // Project Details Go Here
+                  h2 #{room.room_name}
+                  p.item-intro.text-muted Lorem ipsum dolor sit amet consectetur.
+                  img.img-responsive.img-centered(src=room.image.path + "/" + room.image.originalname, alt='')
+                  p
+                    | Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!
+                  p
+                    strong Want these icons in this portfolio item sample?
+                    | You can download 60 of them for free, courtesy of 
+                    a(href='https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc') RoundIcons.com
+                    | , or you can purchase the 1500 icon set 
+                    a(href='https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc') here
+                    | .
+                  ul.list-inline
+                    li Date: #{room.createdAt}
+                    li Client: Round Icons
+                    li Category: Graphic Design
+                  button.btn.btn-primary(type='button', data-dismiss='modal')
+                    i.fa.fa-times
+                    |  Close Project
+
 //- // About Section
 //- section#about
 //-     .container

@@ -1,6 +1,8 @@
 extends ../layout
+
 block header
-    header#header(style="background-image: url('../images/list_bg.jpg');")
+
+    header#header
         .container
         // DaumMap
         #map(style='width:100%;height:550px;')
@@ -21,32 +23,19 @@ block content
       .col-lg-12
         h1.page-header
           | 숙소 목록
-          small Secondary Text
+          //- small Secondary Text
     // /.row
     // Projects Row
     .row
       each room in rooms
         .col-md-4.portfolio-item
           a(href='#')
-            img.img-responsive.thumbnail(src=room.image.path + "/" + room.image.originalname, alt=room.image.path)
+            img.img-responsive.thumbnail(src=room.image.path + "/" + room.image.originalname, alt=room.image.originalname )
           h3
-            a(href='#') Project Name
+            a(href='#') #{room.room_name}
+            small &nbsp;&nbsp;#{room.city}
           p
-            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.
-        .col-md-4.portfolio-item
-          a(href='#')
-            img.img-responsive(src='http://placehold.it/700x400', alt='')
-          h3
-            a(href='#') Project Name
-          p
-            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.
-        .col-md-4.portfolio-item
-          a(href='#')
-            img.img-responsive(src='http://placehold.it/700x400', alt='')
-          h3
-            a(href='#') Project Name
-          p
-            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.
+            | #{room.room_intro}
     // /.row
     // Projects Row
     .row

@@ -1,0 +1,7 @@
+.thumbnail{
+    object-fit: cover;
+    object-position: center;
+    width: 700px;
+    height: 250px;
+
+}
