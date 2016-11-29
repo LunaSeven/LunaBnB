@@ -16,65 +16,65 @@ block content
         h3 
           | 지역에 온 사람들을 환영해주고 이들이 집처럼 편안함을 느낄 수 있도록 도와주세요.
         hr
-        form
+        form(action="/rooms/host" method="post" enctype="multipart/form-data")
           .col-md-6
           
           
             .form-group
               label 숙소 이름
-              input.form-control(type='text', placeholder='숙소 이름')
+              input.form-control(type='text', placeholder='숙소 이름' name='input_name')
             .form-group
               label 소개
-              textarea.form-control(rows='5')
+              textarea.form-control(rows='5' name='input_intro')
             .form-group
               label(for='Password') 도시
-              select#city.form-control.selectpicker
+              select#city.form-control.selectpicker(name='select_city')
                 optgroup(label="수도권")
-                  option(selected) 서울
-                  option 경기
-                  option 인천
-                  option 강원
+                  option(selected value='서울') 서울
+                  option(value='경기') 경기
+                  option(value='인천') 인천
+                  option(value='강원') 강원
                 optgroup(label="중부권")
-                  option 대전
-                  option 충북
-                  option 충남
+                  option(value='대전') 대전
+                  option(value='충북') 충북
+                  option(value='충남') 충남
                 optgroup(label="남부권")
-                  option 부산
-                  option 울산
-                  option 경남
-                  option 대구
-                  option 경북
-                  option 광주
-                  option 전남
-                  option 전주/전북
-                  option 제주
+                  option(value='부산') 부산
+                  option(value='울산') 울산
+                  option(value='경남') 경남
+                  option(value='대구') 대구
+                  option(value='경북') 경북
+                  option(value='광주') 광주
+                  option(value='전남') 전남
+                  option(value='전주/전북') 전주/전북
+                  option(value='제주') 제주
             .form-group
               label 주소
               br
               script(src='http://dmaps.daum.net/map_js_init/postcode.v2.js')
 
-              span#host_postcode(style='color:#eee') 우편번호
+              span#host_postcode(style='color:#eee' name='post_code') 우편번호
               input#find_address.btn.btn-success(type='button', value='우편번호 찾기')
               br
-              input.form-control#sample4_address(type='text', placeholder='도로명주소')
+              input.form-control#sample4_address(type='text', placeholder='도로명주소' name='input_addr1')
               span#guide(style='color:#999')
-              input#sample4_address2.form-control(type='text', placeholder='상세주소')
+              input#sample4_address2.form-control(type='text', placeholder='상세주소' name='input_addr2')
 
             .form-group
               label 요금
             .inner-addon.right-addon
               i.fa.fa-krw
-              input.form-control(type="number", placeholder='1박당 요금')
+              input.form-control(type="number", placeholder='1박당 요금' name='input_fee')
             br
           .col-md-6
             .form-group
               label 숙소 이미지
-              input.form-control.file(type='file',  multiple data-show-upload="false", data-show-caption="true")
+              input.form-control.file(type='file',  multiple data-show-upload="false", data-show-caption="true" name='room_image')
             .form-group
               label 편의시설
-              textarea.form-control(rows='5')
+              textarea.form-control(rows='5' name='input_facilities')
             
             .form-group
               label 이용규칙
-              textarea.form-control(rows='5')
+              textarea.form-control(rows='5' name='input_rules')
             button.btn.btn-info(type='submit') 호스팅하기
