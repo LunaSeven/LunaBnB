@@ -30,7 +30,7 @@ block content
               label 소개
               textarea.form-control(rows='5' name='input_intro')
             .form-group
-              label(for='Password') 도시
+              label 도시
               select#city.form-control.selectpicker(name='select_city')
                 optgroup(label="수도권")
                   option(selected value='서울') 서울
@@ -62,7 +62,23 @@ block content
               input.form-control#sample4_address(type='text', placeholder='도로명주소' name='input_addr1')
               span#guide(style='color:#999')
               input#sample4_address2.form-control(type='text', placeholder='상세주소' name='input_addr2')
+              input#hidden_latitude(type='hidden',  name='latitude' attr='위도')
+              input#hidden_longitude(type='hidden',  name='longitude' attr='경도')
 
+              #map(style='width:99%;height:230px;display:none;')
+              script.
+                var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+                    mapOption = {
+                          center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+                          level: 4 // 지도의 확대 레벨
+                    };                
+                var map = new daum.maps.Map(mapContainer, mapOption);
+                var geocoder = new daum.maps.services.Geocoder();
+                //마커를 미리 생성
+                var marker = new daum.maps.Marker({
+                    position: new daum.maps.LatLng(37.537187, 127.005476),
+                    map: map
+                });
             .form-group
               label 요금
             .inner-addon.right-addon
@@ -80,4 +96,4 @@ block content
             .form-group
               label 이용규칙
               textarea.form-control(rows='5' name='input_rules')
-            button.btn.btn-info(type='submit') 호스팅하기
+            button.btn.btn-info.btn-lg(type='submit') 호스팅하기

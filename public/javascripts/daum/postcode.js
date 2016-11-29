@@ -36,9 +36,28 @@ $('#find_address').click(function() {
             $('#host_postcode').val(data.zonecode);
             // document.getElementById('sample4_postcode').value = data.zonecode; //5자리 새우편번호 사용
             document.getElementById('sample4_address').value = fullAddr;
+            geocoder.addr2coord(data.address, function(status, result) {
+                // 정상적으로 검색이 완료됐으면
+                if (status === daum.maps.services.Status.OK) {
+                    // 해당 주소에 대한 좌표를 받아서
+                    var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
+                    console.log(result.addr[0].lat+"&&" +"&&"+ result.addr[0].lng);
+                    // 위도랑 경도를 추가하자ㅏㅏㅏㅏㅏㅏㅏ
+                    $('#hidden_latitude').val(result.addr[0].lat);
+                    $('#hidden_longitude').val(result.addr[0].lng);
 
+                    // 지도를 보여준다.
+                    mapContainer.style.display = "block";
+                    map.relayout();
+                    // 지도 중심을 변경한다.
+                    map.setCenter(coords);
+                    // 마커를 결과값으로 받은 위치로 옮긴다.
+                    marker.setPosition(coords)
+                }
             // 커서를 상세주소 필드로 이동한다.
-            document.getElementById('sample4_address2').focus();
-        }
+        });
+        document.getElementById('sample4_address2').focus();
+      }
+
     }).open();
 });
