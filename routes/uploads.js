@@ -19,7 +19,11 @@ router.get('/:uuid/:filename', function(req, res, next) {
                 "Content-Disposition": 'attachment; filename="' + room.image.originalname + '"',
                 "Content-Type": room.image.mimetype
             });
-            fs.createReadStream(room.image.path).pipe(res);
+            var st = fs.createReadStream(room.image.path);
+            st.on('error', function () {
+                res.status(404).end();
+            });
+            st.pipe(res);
         }
     });
 });
