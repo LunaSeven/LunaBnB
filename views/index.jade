@@ -60,7 +60,7 @@ block place
                       .portfolio-hover
                           .portfolio-hover-content
                             i.fa.fa-search-plus.fa-4x
-                      img.img-responsive.thumbnail(src=room.image.path + "/" + room.image.originalname, alt=room.image.originalname)
+                      img.img-responsive.thumbnail(src="/rooms/#{room._id}/img", alt=room.image.originalname)
                   .portfolio-caption
                       h4 #{room.room_name}
                       p.text-muted &#8361; #{room.fee}(1박)

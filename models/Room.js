@@ -21,7 +21,6 @@ var schema = new Schema({
   toObject: {virtuals: true}
 });
 
-
 var Room = mongoose.model('Room', schema);
 
 module.exports = Room;

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
+var path = require('path');
 var Room = require('../models/Room');
 var multer = require('multer');
 var upload = multer({dest: './public/images/uploads/'});
@@ -32,7 +33,22 @@ router.get('/', function(req, res, next) {
 router.get('/room', function(req, res, next) {
   res.render('rooms/index');
 });
-
+router.get('/:id/img', function(req, res, next) {
+  Room.findById(req.params.id, function(err, room) {
+      if (err) next(err);
+      else {
+          res.set({
+              "Content-Disposition": 'attachment; filename="' + room.image.originalname + '"',
+              "Content-Type": room.image.mimetype
+          });
+          var st = fs.createReadStream(path.join(__dirname, "../" + room.image.path));
+          st.on('error', function () {
+              res.status(404).end();
+          });
+          st.pipe(res);
+      }
+  });
+})
 // Go Register Room Page
 router.get('/host',needAuth,function(req, res, next) {
   res.render('rooms/host');
