@@ -136,12 +136,14 @@ block content
           // /.row
   
   if(currentUser)
-    each favorite in favorites
-      if(favorite.client_id==currentUser._id)
-        a.btn_favorite.fa.fa-heart.btn-circle.btn-lg.btn-danger.btn.selected(style='float:right')
-      else
-        a.btn_favorite.fa.fa-heart-o.btn-circle.btn-lg.btn-info.btn(style='float:right')
-  if(currentUser)
+    if(favorites)
+      a.btn_favorite.fa.fa-heart-o.btn-circle.btn-lg.btn-info.btn(style='float:right')
+      each favorite in favorites
+        if(favorite.client_id==currentUser._id)
+          a.btn_favorite.fa.fa-heart.btn-circle.btn-lg.btn-danger.btn.selected(style='float:right')
+        else
+          a.btn_favorite.fa.fa-heart-o.btn-circle.btn-lg.btn-info.btn(style='float:right')
+        
     script.
       $('.btn_favorite').click(function(){
         if($(this).hasClass('selected')){
@@ -162,8 +164,6 @@ block content
             }
           }
         });
-
-      
       
         }else{
           //- 좋아요 누를때
