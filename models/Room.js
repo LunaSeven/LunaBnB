@@ -2,7 +2,9 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var schema = new Schema({
+
   host_email: {type: String},
+  host_id: {type: String},
   room_name: {type: String},
   room_intro: {type: String},
   city: {type: String},

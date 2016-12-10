@@ -42,6 +42,15 @@ router.get('/', function(req, res, next) {
     });
 });
 
+router.get('/:id/reservations',needAuth, function(req, res, next) {
+  Reservation.find({host_id: req.params.id}, function(err, reservations) {
+    console.log(reservations);
+    if (err) {
+      return next(err);
+    }
+    res.render('rooms/reservations', {reservations: reservations});
+  });
+});
 
 
 router.get('/room', function(req, res, next) {
@@ -85,6 +94,7 @@ router.post('/host', upload.single('room_image'), function(req, res, next) {
 
     var newRoom = new Room({
         host_email: req.body.host_email,
+        host_id: req.body.host_id,
         room_name: req.body.input_name,
         room_intro: req.body.input_intro,
         city: req.body.select_city,
@@ -111,6 +121,7 @@ router.post('/reserve', needAuth, function(req, res, next) {
 var room_id = req.query.id;
 var newResevation = new Reservation({
   room_id: req.query.id,
+  host_id: req.query.id,
   client_id: req.body.client_id,
   room_name: req.body.room_name,
   client_email: req.body.client_email,

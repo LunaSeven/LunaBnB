@@ -13,20 +13,19 @@ block header
 block content
   .container
     h1.page-header 숙소 예약 목록    
-    a.btn.btn-primary(href='/rooms/#{currentUser._id}/reservations') My Rooms
+    a.btn.btn-success(href='/users/#{currentUser._id}/reservations') My Reservations
 
     .table-responsive
-      table.table.table-striped.table-bordered
+      table.table.table-striped.table-bordered.table-hover
         thead
           tr
-            th 예약번호
             th 숙소이름
+            th 예약번호
             th 체크인
             th 체크아웃
             th 인원
             th 예약날짜
-            th 예약상태
-            th 취소
+            th 승인
         tbody
           each reservation in reservations
             tr
@@ -36,13 +35,5 @@ block content
               td= moment(reservation.checkOut).format('YYYY-MM-DD')
               td= reservation.member
               td= moment(reservation.createdAt).format('YYYY-MM-DD HH:mm:ss')
-              td 
-                //- |  #{reservation.isReserve}
-                if(reservation.isReserve==false)
-                  | 예약거절
-                else if(reservation.isReserve==true)
-                  | 예약승인
-                else
-                  | 예약 대기중
               td
-                a.btn.btn-xs.btn-warning(href='/users/reservation/#{reservation._id}?_method=DELETE') 예약취소
+                a.btn.btn-xs.btn-warning(href='/users/reservation/#{reservation._id}?_method=DELETE') 예약승인

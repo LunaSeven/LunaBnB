@@ -124,6 +124,7 @@ block content
                   input#client_email(name='client_email' type="hidden" value='#{currentUser.email}')
                   input#client_id(name='client_id' type="hidden" value='#{currentUser._id}')
                   input#room_name(name='room_name' type="hidden" value='#{room.room_name}')
+                  input#host_id(name='host_id' type="hidden" value='#{room.host_id}')
                   button.btn.btn-lg.btn-danger.btn-block(type='submit') 예약하기
                 else
                   | 로그인 후 예약 가능합니다.

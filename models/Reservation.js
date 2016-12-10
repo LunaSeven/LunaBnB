@@ -4,12 +4,13 @@ var mongoose = require('mongoose'),
 var schema = new Schema({
   room_id: {type: String},
   client_id: {type: String},
+  host_id: {type: String},
   client_email: {type: String},
   room_name: {type: String},
   member: {type: Number},
   checkIn: {type: Date},
   checkOut: {type: Date},
-  isReserve: {type: Boolean, default:false},
+  isReserve: {type: Boolean, default:null},
   createdAt: {type: Date, default: Date.now}
 }, {
   toJSON: { virtuals: true},

@@ -7,6 +7,10 @@ block content
         .col-lg-12.text-center
             h2.section-heading Profile
             h3.section-subheading.text-muted You can edit your Profile
+          .col-lg-12.text-right
+            
+            a.btn.btn-md.btn-warning(href='/users/#{user._id}?_method=DELETE') 회원탈퇴
+
       .row
         .col-lg-12
           form#profileForm(action='/users/#{user._id}?_method=PUT', method='POST')
