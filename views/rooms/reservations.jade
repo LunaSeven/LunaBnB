@@ -25,15 +25,21 @@ block content
             th 체크아웃
             th 인원
             th 예약날짜
-            th 승인
+            th 예약승인
         tbody
           each reservation in reservations
             tr
-              td= reservation._id
               td= reservation.room_name
+              td= reservation._id
               td= moment(reservation.checkIn).format('YYYY-MM-DD')
               td= moment(reservation.checkOut).format('YYYY-MM-DD')
               td= reservation.member
               td= moment(reservation.createdAt).format('YYYY-MM-DD HH:mm:ss')
               td
-                a.btn.btn-xs.btn-warning(href='/users/reservation/#{reservation._id}?_method=DELETE') 예약승인
+                if(reservation.isReserve==false || reservation.isReserve==null)
+                  a#true.btn.btn-xs.btn-primary(href='/rooms/reservation/#{reservation._id}/true?_method=PUT') 승인
+                | 
+                if(reservation.isReserve==true || reservation.isReserve==null)
+
+                  a.btn.btn-xs.btn-danger(href='/rooms/reservation/#{reservation._id}/false?_method=PUT') 거절
+                

@@ -29,20 +29,60 @@ block content
             th 취소
         tbody
           each reservation in reservations
-            tr
-              td= reservation._id
-              td= reservation.room_name
-              td= moment(reservation.checkIn).format('YYYY-MM-DD')
-              td= moment(reservation.checkOut).format('YYYY-MM-DD')
-              td= reservation.member
-              td= moment(reservation.createdAt).format('YYYY-MM-DD HH:mm:ss')
-              td 
-                //- |  #{reservation.isReserve}
-                if(reservation.isReserve==false)
-                  | 예약거절
-                else if(reservation.isReserve==true)
-                  | 예약승인
-                else
-                  | 예약 대기중
-              td
-                a.btn.btn-xs.btn-warning(href='/users/reservation/#{reservation._id}?_method=DELETE') 예약취소
+            if(reservation.isReserve==false)
+              tr.danger
+                td= reservation._id
+                td= reservation.room_name
+                td= moment(reservation.checkIn).format('YYYY-MM-DD')
+                td= moment(reservation.checkOut).format('YYYY-MM-DD')
+                td= reservation.member
+                td= moment(reservation.createdAt).format('YYYY-MM-DD HH:mm:ss')
+                td 
+                  //- |  #{reservation.isReserve}
+                  if(reservation.isReserve==false)
+                    | 예약거절
+                  else if(reservation.isReserve==true)
+                    | 예약승인
+                  else
+                    | 예약 대기중
+                td
+                  a.btn.btn-xs.btn-warning(href='/users/reservation/#{reservation._id}?_method=DELETE') 예약취소
+
+            else if(reservation.isReserve==true)
+              tr.success
+                td= reservation._id
+                td= reservation.room_name
+                td= moment(reservation.checkIn).format('YYYY-MM-DD')
+                td= moment(reservation.checkOut).format('YYYY-MM-DD')
+                td= reservation.member
+                td= moment(reservation.createdAt).format('YYYY-MM-DD HH:mm:ss')
+                td 
+                  //- |  #{reservation.isReserve}
+                  if(reservation.isReserve==false)
+                    | 예약거절
+                  else if(reservation.isReserve==true)
+                    | 예약승인
+                  else
+                    | 예약 대기중
+                td
+                  a.btn.btn-xs.btn-warning(href='/users/reservation/#{reservation._id}?_method=DELETE') 예약취소
+
+            else
+              tr.info
+              
+                td= reservation._id
+                td= reservation.room_name
+                td= moment(reservation.checkIn).format('YYYY-MM-DD')
+                td= moment(reservation.checkOut).format('YYYY-MM-DD')
+                td= reservation.member
+                td= moment(reservation.createdAt).format('YYYY-MM-DD HH:mm:ss')
+                td 
+                  //- |  #{reservation.isReserve}
+                  if(reservation.isReserve==false)
+                    | 예약거절
+                  else if(reservation.isReserve==true)
+                    | 예약승인
+                  else
+                    | 예약 대기중
+                td
+                  a.btn.btn-xs.btn-warning(href='/users/reservation/#{reservation._id}?_method=DELETE') 예약취소

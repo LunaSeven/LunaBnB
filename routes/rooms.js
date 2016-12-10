@@ -117,11 +117,48 @@ router.post('/host', upload.single('room_image'), function(req, res, next) {
         }
     });
 });
+
+router.put('/reservation/:id/true', needAuth, function(req, res, next) {
+  Reservation.findById(req.params.id, function(err, reservation) {
+    if (err) {
+      return res.status(500).json({message: 'internal error', desc: err});
+    }
+    if (!reservation) {
+      return res.status(404).json({message: 'reservation not found'});
+    }
+      reservation.isReserve = true;
+    reservation.save(function(err) {
+      if (err) {
+        return res.status(500).json({message: 'internal error', desc: err});
+      }
+      res.redirect('back');
+    });
+  });
+});
+
+router.put('/reservation/:id/false', needAuth, function(req, res, next) {
+  Reservation.findById(req.params.id, function(err, reservation) {
+    if (err) {
+      return res.status(500).json({message: 'internal error', desc: err});
+    }
+    if (!reservation) {
+      return res.status(404).json({message: 'reservation not found'});
+    }
+      reservation.isReserve = false;
+    reservation.save(function(err) {
+      if (err) {
+        return res.status(500).json({message: 'internal error', desc: err});
+      }
+      res.redirect('back');
+    });
+  });
+});
+
 router.post('/reserve', needAuth, function(req, res, next) {
 var room_id = req.query.id;
 var newResevation = new Reservation({
   room_id: req.query.id,
-  host_id: req.query.id,
+  host_id: req.body.host_id,
   client_id: req.body.client_id,
   room_name: req.body.room_name,
   client_email: req.body.client_email,
