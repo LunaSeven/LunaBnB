@@ -663,6 +663,7 @@
                     this.currentDate.date(date);
 
                     this.showDate(this.currentDate);
+                    console.log("aaaa");
                     this.$element.trigger('dateSelected', this.currentDate);
                  }
               },
@@ -701,6 +702,7 @@
               },
               constructHTMLCalendar: function (date, calendar)
               {
+                // console.log(calendar);
                  var _template = "";
 
                  _template += '<div class="dtp-picker-month">' + date.locale(this.params.lang).format('MMMM YYYY') + '</div>';
@@ -740,6 +742,7 @@
                  _template += '</tr></tbody></table>';
 
                  return _template;
+
               },
               setName: function ()
               {
@@ -1001,6 +1004,7 @@
               _onSelectDate: function (e)
               {
                 console.log(e);
+                console.log('evnet');
                  this.$dtpElement.find('a.dtp-select-day').removeClass('selected');
                  $(e.currentTarget).addClass('selected');
 

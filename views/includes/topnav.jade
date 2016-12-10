@@ -15,16 +15,18 @@ nav#mainNav.navbar.navbar-fixed-top.navbar-custom.transparent
                 li.hidden
                     a(href='#page-top')
                 li
-                    a.page-scroll(href='/rooms') rooms
-                li
-                    a.page-scroll(href='/rooms/room') Portfolio
+                    a.page-scroll(href='/rooms?city=서울') rooms
                 if (currentUser) 
+                  //- li
+                  //-   a.page-scroll(href='/rooms/room') Reservation
                   li
                     a.page-scroll(href='/rooms/host') Hosting
                   li
                     a.page-scroll(href='/users/#{currentUser._id}/edit') profile
                   li
                     a.page-scroll(href='#portfolioModal1', data-toggle='modal') Favorite
+                  li
+                    a.page-scroll(href='/users/#{currentUser._id}/reservations') Reservations
                   li
                     a(href='/signout') Signout
                 else

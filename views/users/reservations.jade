@@ -1,0 +1,40 @@
+extends ../layout
+block header
+  script.
+    $('#mainNav').addClass('navbar-inverse');
+
+  .container
+    .row
+  br
+  br
+  br
+  br
+  br
+block content
+  .container
+    h1.page-header 숙소 예약 목록    
+    a.btn.btn-primary(href='/users/new') 숙소 예약 관리 
+
+    
+    table.table.table-striped.table-bordered
+      thead
+        tr
+          th 예약번호
+          th 숙소이름
+          th 체크인
+          th 체크아웃
+          th 인원
+          th 예약날짜
+
+          th
+      tbody
+        each reservation in reservations
+          tr
+            td= reservation._id
+            td= reservation.room_name
+            td= moment(reservation.checkIn).format('YYYY-MM-DD')
+            td= moment(reservation.checkOut).format('YYYY-MM-DD')
+            td= reservation.member
+            td= moment(reservation.createdAt).format('YYYY-MM-DD HH:mm:ss')
+            td
+              a.btn.btn-xs.btn-warning(href='/users/reservation/#{reservation._id}?_method=DELETE') 예약취소

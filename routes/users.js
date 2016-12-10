@@ -1,5 +1,6 @@
 var express = require('express'),
     User = require('../models/User');
+    Reservation = require('../models/Reservation');
 var router = express.Router();
 
 function needAuth(req, res, next) {
@@ -63,6 +64,16 @@ router.get('/:id/edit',needAuth, function(req, res, next) {
     res.render('users/profile', {user: user});
   });
 });
+router.get('/:id/reservations',needAuth, function(req, res, next) {
+  Reservation.find({client_id: req.params.id}, function(err, reservations) {
+    console.log(reservations);
+    if (err) {
+      return next(err);
+    }
+    res.render('users/reservations', {reservations: reservations});
+  });
+});
+
 // ////////////////////////////////////////////////////////
 // router.get('/edit', function(req, res, next) {
 //     res.render('users/profile');
@@ -112,6 +123,15 @@ router.delete('/:id', function(req, res, next) {
     }
     req.flash('success', '사용자 계정이 삭제되었습니다.');
     res.redirect('/users');
+  });
+});
+router.delete('/reservation/:id', function(req, res, next) {
+  Reservation.findOneAndRemove({_id: req.params.id}, function(err) {
+    if (err) {
+      return next(err);
+    }
+    req.flash('success', '예약이 취소되었습니다.');
+    res.redirect('back');
   });
 });
 

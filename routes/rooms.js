@@ -3,6 +3,7 @@ var router = express.Router();
 var fs = require('fs');
 var path = require('path');
 var Room = require('../models/Room');
+var Reservation = require('../models/Reservation');
 var multer = require('multer');
 var upload = multer({
     dest: './public/images/uploads/'
@@ -21,13 +22,22 @@ function needAuth(req, res, next) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    Room.find({}, function(err, rooms) {
+    Room.find({city:req.query.city}, function(err, rooms) {
         if (err) {
             next(err);
         } else {
-            res.render('rooms/list', {
-                rooms: rooms
+          Room.findOne({city: req.query.city}, function(err, marker) {
+            if (err) {
+                return next(err);
+              }
+
+            res.render('rooms/list',{
+                rooms: rooms,
+                marker: marker,
+                city: req.query.city
             });
+          });
+
         }
     });
 });
@@ -93,9 +103,29 @@ router.post('/host', upload.single('room_image'), function(req, res, next) {
             next(err);
         } else {
             req.flash('success', '숙소 등록이 완료되었습니다.');
-            res.render('rooms/step');
+            res.render('rooms/step',{city:req.body.select_city});
         }
     });
+});
+router.post('/reserve', needAuth, function(req, res, next) {
+var room_id = req.query.id;
+var newResevation = new Reservation({
+  room_id: req.query.id,
+  client_id: req.body.client_id,
+  room_name: req.body.room_name,
+  client_email: req.body.client_email,
+  member: req.body.member,
+  checkIn: req.body.date_check_in,
+  checkOut: req.body.date_check_out,
+});
+newResevation.save(function(err) {
+    if (err) {
+        next(err);
+    } else {
+        req.flash('success', '숙소 예약이 완료되었습니다.');
+        res.render('users/step');
+    }
+});
 });
 
 

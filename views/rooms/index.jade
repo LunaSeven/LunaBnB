@@ -82,7 +82,7 @@ block content
                 })(document, 'script');
               noscript  라이브리 댓글 작성을 위해 JavaScript를 활성화 해주세요
             // 시티 설치 코드 끝
-
+          
         // Blog Sidebar Widgets Column
         .col-md-4
           // Blog Search Well
@@ -92,17 +92,42 @@ block content
                 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               hr
-              h5 Check In
-              .inner-addon.right-addon
-                i.fa.fa-calendar
-                input#date_check_in.form-control.floating-label(type="text", placeholder="Select Date")
-              h5 Check Out
-              .inner-addon.right-addon
-                i.fa.fa-calendar
-                input#date_check_out.form-control.floating-label(type="text", placeholder="Select Date")
-              hr  
-              hr
-              button.btn.btn-lg.btn-danger.btn-block(type='submit') 예약하기
+              form(action="/rooms/reserve?id=#{room._id}" method="post" )
+                .form-group
+                  h5 Check In
+                  .inner-addon.right-addon
+                    i.fa.fa-calendar
+                    input#date_check_in.form-control.floating-label(name='date_check_in' type="text", placeholder="Select Date")
+                .form-group
+                  h5 Check Out
+                  .inner-addon.right-addon
+                    i.fa.fa-calendar
+                    input#date_check_out.form-control.floating-label(name = 'date_check_out' type="text", placeholder="Select Date")
+                
+                .form-group
+                  label 인원
+                  select#member.form-control.selectpicker(name='member' )
+                    option(selected value=1) 1명
+                    option(value=2) 2명
+                    option(value=3) 3명
+                    option(value=4) 4명
+                    option(value=5) 5명
+                    option(value=6) 6명
+                    option(value=7) 7명
+                    option(value=8) 8명
+                    option(value=9) 9명
+                    option(value=10) 10+명
+                hr 
+                span#result
+                hr
+                if(currentUser)
+                  input#client_email(name='client_email' type="hidden" value='#{currentUser.email}')
+                  input#client_id(name='client_id' type="hidden" value='#{currentUser._id}')
+                  input#room_name(name='room_name' type="hidden" value='#{room.room_name}')
+                  button.btn.btn-lg.btn-danger.btn-block(type='submit') 예약하기
+                else
+                  | 로그인 후 예약 가능합니다.
+              
             //- .well
             //-   h4 Side Widget Well
             //-   p

@@ -78,24 +78,22 @@ block place
                 .modal-body
                   // Project Details Go Here
                   h2 #{room.room_name}
-                  p.item-intro.text-muted Lorem ipsum dolor sit amet consectetur.
-                  img.img-responsive.img-centered(src="/rooms/#{room._id}/img", alt='')
+                  p.item-intro.text-muted #{room.addr1} #{room.addr2}
+                  a(href='/rooms/room?id=#{room._id}')
+                    img.img-responsive.img-centered(src="/rooms/#{room._id}/img", alt='')
                   p
-                    | Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!
+                    | #{room.room_intro}
                   p
-                    strong Want these icons in this portfolio item sample?
-                    | You can download 60 of them for free, courtesy of 
-                    a(href='https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc') RoundIcons.com
-                    | , or you can purchase the 1500 icon set 
-                    a(href='https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc') here
-                    | .
+                    strong &#8361; #{room.fee}(1박)
                   ul.list-inline
                     li Date: #{room.createdAt}
-                    li Client: Round Icons
-                    li Category: Graphic Design
                   button.btn.btn-primary(type='button', data-dismiss='modal')
                     i.fa.fa-times
                     |  Close Project
+                  a(href='/rooms/room?id=#{room._id}')
+                    button.btn.btn-danger(type='button' )
+                      i.fa.fa-calendar-check-o
+                      |  예약하기
 
 //- // About Section
 //- section#about
