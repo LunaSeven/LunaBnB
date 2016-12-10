@@ -18,15 +18,20 @@ block content
       table.table.table-striped.table-bordered
         thead
           tr
-            th 예약번호
             th 숙소이름
+            th 호스트
+            th 주소
+            th 상세주소
             th 삭제
         tbody
           each room in rooms
             each favorite in favorites
               if(room._id==favorite.room_id)
                 tr.danger
-                  td= room.room_name
-                  td= favorite.room_name
+                  td
+                    a(href='/rooms/room?id=#{room._id}')= room.room_name
+                  td= room.host_email
+                  td= room.addr1
+                  td= room.addr2
                   td
                     a.btn.btn-xs.btn-danger(href='/users/favorite/#{favorite._id}?_method=DELETE') 삭제

@@ -183,6 +183,14 @@ router.put('/reservation/:id/false', needAuth, function(req, res, next) {
 
 router.post('/reserve', needAuth, function(req, res, next) {
 var room_id = req.query.id;
+if(req.body.date_check_in==""){
+  req.flash('danger', '체크인 날짜를 입력해주세요');
+  res.redirect('back');
+}
+if(req.body.date_check_out==""){
+  req.flash('danger', '체크아웃 날짜를 입력해주세요');
+  res.redirect('back');
+}
 var newResevation = new Reservation({
   room_id: req.query.id,
   host_id: req.body.host_id,
