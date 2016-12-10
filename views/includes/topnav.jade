@@ -29,12 +29,17 @@ nav#mainNav.navbar.navbar-fixed-top.navbar-custom.transparent
                     a.page-scroll(href='/users/#{currentUser._id}/reservations') Reservations
                   li
                     a(href='/signout') Signout
+
                 else
 
                   li
                     a.signin-cd-popup-trigger.page-scroll.fadeandscale_open(href="#fadeandscale") Signin
                   li
                     a.signup-cd-popup-trigger.page-scroll.fadeandscale_open(href="#fadeandscale") Signup
+                if(currentUser)
+                  if(currentUser.isAdmin==true)
+                    li
+                        a.page-scroll(href='/users') users
 
 
 // Signin
