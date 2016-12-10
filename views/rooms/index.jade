@@ -134,4 +134,58 @@ block content
             //-   p
             //-     | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.
           // /.row
-  a.btn_favorite.fa.fa-heart-o.btn-circle.btn-lg.btn-info.btn(style='float:right')
+  
+  if(currentUser)
+    each favorite in favorites
+      if(favorite.client_id==currentUser._id)
+        a.btn_favorite.fa.fa-heart.btn-circle.btn-lg.btn-danger.btn.selected(style='float:right')
+      else
+        a.btn_favorite.fa.fa-heart-o.btn-circle.btn-lg.btn-info.btn(style='float:right')
+  if(currentUser)
+    script.
+      $('.btn_favorite').click(function(){
+        if($(this).hasClass('selected')){
+      //- //- 좋아요 취소하기 
+        $.ajax({
+          url: '/users/favorite/ajax',
+          method: 'POST',
+          dataType: 'json',
+          data: {client_id:'#{currentUser._id}', room_id: '#{room._id}', room_name: '#{room.room_name}',host_id:'#{room.host_id}'},
+          success: function(data) {
+            if(data==1){
+              alert('Favorite이 취소되었습니다.');
+              $('.btn_favorite').removeClass('btn-danger');
+              $('.btn_favorite').removeClass('fa-heart');
+              $('.btn_favorite').addClass('btn-info');
+              $('.btn_favorite').addClass('fa-heart-o');
+              $('.btn_favorite').removeClass('selected');
+            }
+          }
+        });
+
+      
+      
+        }else{
+          //- 좋아요 누를때
+          $.ajax({
+            url: '/rooms/#{currentUser._id}/favorite',
+            method: 'POST',
+            dataType: 'json',
+            data: {room_id: '#{room._id}', room_name: '#{room.room_name}',host_id:'#{room.host_id}'},
+            success: function(data) {
+              if(data==1){
+                alert('Favorite에 추가되었습니다.');
+                $('.btn_favorite').removeClass('btn-info');
+                $('.btn_favorite').removeClass('fa-heart-o');
+            
+                $('.btn_favorite').addClass('btn-danger');
+                $('.btn_favorite').addClass('fa-heart');
+                $('.btn_favorite').addClass('selected');
+
+              }else{
+                alert('error');
+              }
+            }
+          });
+        }
+      });

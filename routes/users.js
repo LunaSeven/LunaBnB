@@ -1,6 +1,8 @@
 var express = require('express'),
     User = require('../models/User');
     Reservation = require('../models/Reservation');
+    Favorite = require('../models/Favorite');
+    Room = require('../models/Room');
 var router = express.Router();
 
 function needAuth(req, res, next) {
@@ -74,6 +76,24 @@ router.get('/:id/reservations',needAuth, function(req, res, next) {
   });
 });
 
+router.get('/:id/favorites',needAuth, function(req, res, next) {
+  Favorite.find({client_id: req.params.id}, function(err, favorites) {
+    console.log(favorites);
+    if (err) {
+      return next(err);
+    }
+    Room.find({}, function (err, rooms) {
+        if (err) {
+            next(err);
+        } else {
+          res.render('users/favorites', {favorites: favorites, rooms: rooms});
+        }
+    });
+
+
+  });
+});
+
 // ////////////////////////////////////////////////////////
 // router.get('/edit', function(req, res, next) {
 //     res.render('users/profile');
@@ -132,6 +152,26 @@ router.delete('/reservation/:id', function(req, res, next) {
     }
     req.flash('success', '예약이 취소되었습니다.');
     res.redirect('back');
+  });
+});
+
+router.delete('/favorite/:id', function(req, res, next) {
+  Favorite.findOneAndRemove({_id: req.params.id}, function(err) {
+    if (err) {
+      return next(err);
+    }
+    req.flash('success', 'Favorite이 취소되었습니다.');
+    res.redirect('back');
+  });
+});
+
+router.post('/favorite/ajax', function(req, res, next) {
+  console.log(req.body.client_id);
+  Favorite.findOneAndRemove({client_id: req.body.client_id, room_id:req.body.room_id}, function(err) {
+    if (err) {
+      return next(err);
+    }
+    res.json(1);
   });
 });
 

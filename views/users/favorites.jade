@@ -1,0 +1,32 @@
+extends ../layout
+block header
+  script.
+    $('#mainNav').addClass('navbar-inverse');
+
+  .container
+    .row
+  br
+  br
+  br
+  br
+  br
+block content
+  .container
+    h1.page-header Favorite List    
+
+    .table-responsive
+      table.table.table-striped.table-bordered
+        thead
+          tr
+            th 예약번호
+            th 숙소이름
+            th 삭제
+        tbody
+          each room in rooms
+            each favorite in favorites
+              if(room._id==favorite.room_id)
+                tr.danger
+                  td= room.room_name
+                  td= favorite.room_name
+                  td
+                    a.btn.btn-xs.btn-danger(href='/users/favorite/#{favorite._id}?_method=DELETE') 삭제

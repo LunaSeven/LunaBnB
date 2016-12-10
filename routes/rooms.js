@@ -4,6 +4,7 @@ var fs = require('fs');
 var path = require('path');
 var Room = require('../models/Room');
 var Reservation = require('../models/Reservation');
+var Favorite = require('../models/Favorite');
 var multer = require('multer');
 var upload = multer({
     dest: './public/images/uploads/'
@@ -52,6 +53,26 @@ router.get('/:id/reservations',needAuth, function(req, res, next) {
   });
 });
 
+router.post('/:id/favorite',needAuth, function(req, res, next) {
+  console.log("ajax go");
+  console.log(req.body.room_id);
+  console.log(req.body.room_name);
+  console.log(req.body.host_id);
+  var newFavorite = new Favorite({
+      room_id: req.body.room_id,
+      client_id: req.params.id,
+      host_id: req.body.host_id,
+      room_name: req.body.room_name,
+  });
+  newFavorite.save(function(err) {
+      if (err) {
+          return next(err);
+      }
+    res.json(1);
+  });
+
+});
+
 
 router.get('/room', function(req, res, next) {
 var room_id = req.query.id;
@@ -59,8 +80,14 @@ Room.findById(room_id, function(err, room) {
     if (err) {
         return next(err);
     }
-    res.render('rooms/index', {
-        room: room
+    Favorite.find({room_id:room._id},function(err, favorites){
+      if (err) {
+          return next(err);
+      }
+      console.log(favorites);
+      res.render('rooms/index', {
+          room: room,favorites:favorites
+      });
     });
 });
 
