@@ -14,7 +14,7 @@ var schema = new Schema({
   latitude: {type: String},
   longitude: {type: String},
   fee: {type: Number},
-  facillities: {type: String},
+  facilities: {type: String},
   rules: {type: String},
   image: {type: Object},
   createdAt: {type: Date, default: Date.now}

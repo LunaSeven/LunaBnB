@@ -131,7 +131,7 @@ router.post('/host', upload.single('room_image'), function(req, res, next) {
         latitude: req.body.latitude,
         longitude: req.body.longitude,
         fee: req.body.input_fee,
-        facillities: req.body.input_facillities,
+        facilities: req.body.input_facilities,
         rules: req.body.input_rules,
         image: req.file
     });
